@@ -46,7 +46,7 @@ public class LoginServlets extends HttpServlet {
       while (rs.next())
       {
         int id = rs.getInt("id");
-        String usuario = rs.getString("usuario");
+        String usuario = rs.getString("nome");
         String senha = rs.getString("senha");
         
         if( usuario.equals(request.getParameter("nome")) && senha.equals(request.getParameter("senha"))){
