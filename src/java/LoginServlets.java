@@ -6,13 +6,11 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,9 +31,6 @@ public class LoginServlets extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-            
-        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -50,8 +45,6 @@ public class LoginServlets extends HttpServlet {
             out.print("<button type'submit'>Logar</button>");
             out.print("</form>");
             
-            
-            
 //            if ( "guiGay".equals(request.getParameter("nome"))){
 //                out.println("<br/>Isso é verdade ...");
 //                }
@@ -61,14 +54,10 @@ public class LoginServlets extends HttpServlet {
 
         if ( loginChech ( request.getParameter("nome")) && loginChech ( request.getParameter("senha"))){
             if ( request.getParameter("nome").equals("Fulano") && request.getParameter("senha").equals("iesb")){
-                //response.sendRedirect("MenuServlet");
-                
-                HttpSession session = request.getSession(true);
-                session.setAttribute("codigo", "123");
-                
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/MenuServlet");
+                response.sendRedirect("MenuServlet");
+                /* RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/menuServlet");
                 dispatcher.forward(request, response);
-                
+                */
             }
             else if ( !"".equals(request.getParameter("nome")) && request.getParameter("nome") != null) {
                 out.println("<br/>Insira um login ou senha válido");
