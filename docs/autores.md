@@ -13,5 +13,7 @@ O intuito desse arquivo é centralizar as informações dos autores do projeto, 
 
 Abaixo temos uma lista de pessoas que já participaram deste projeto.
 
-Nome | --------------------
+Nome 
+| -------------------- |
 Douglas Santana                   
+Kennedy Alves
