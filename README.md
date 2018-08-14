@@ -10,4 +10,4 @@ O repositório serve para versionar os estudos em sala da matéria de linguagem 
 ## Autores
 Várias pessoas colaboraram com o desenvimento do projeto JavaWEb e decidimos centralizar em um único local todos os que participaram com o desenvolvimento do projeto.
   
-Clique [aqui](docs/Autores.md) para visualizar.
+Clique [aqui](docs/autores.md) para visualizar.
