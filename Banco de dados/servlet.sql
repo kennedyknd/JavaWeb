@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Ago-2018 às 02:49
+-- Generation Time: 21-Ago-2018 às 00:52
 -- Versão do servidor: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -47,6 +47,44 @@ INSERT INTO `cardapios` (`id`, `codigo`, `nome`, `descricao`, `qtd`, `valor_vend
 (1, '0001', 'Suco Laranja', 'Suco Laranja', 50, 20, 20, 0),
 (2, '0002', 'Prato Feito', 'Prato Feito', 50, 10, 10, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(45) NOT NULL,
+  `categorias_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nome`, `categorias_id`) VALUES
+(1, 'Comida', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `logins`
+--
+
+CREATE TABLE `logins` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `logins`
+--
+
+INSERT INTO `logins` (`id`, `nome`, `senha`) VALUES
+(1, 'Fulano', 'iesb');
+
 --
 -- Indexes for dumped tables
 --
@@ -59,6 +97,19 @@ ALTER TABLE `cardapios`
   ADD KEY `fk_cardapios_categorias_idx` (`categorias_id`);
 
 --
+-- Indexes for table `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_categorias_categorias1_idx` (`categorias_id`);
+
+--
+-- Indexes for table `logins`
+--
+ALTER TABLE `logins`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -69,6 +120,18 @@ ALTER TABLE `cardapios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `logins`
+--
+ALTER TABLE `logins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -77,6 +140,12 @@ ALTER TABLE `cardapios`
 --
 ALTER TABLE `cardapios`
   ADD CONSTRAINT `fk_cardapios_categorias` FOREIGN KEY (`categorias_id`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `categorias`
+--
+ALTER TABLE `categorias`
+  ADD CONSTRAINT `fk_categorias_categorias1` FOREIGN KEY (`categorias_id`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
