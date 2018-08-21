@@ -18,16 +18,14 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/CardapioServlet"})
 public class CardapioServlet extends HttpServlet {
     
-    String usuario, senha;
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CardapioServlet</title>");            
+            out.println("<title>::.. LISTAGEM DE PRODUTO ..::</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>LISTAGEM CARDAPIO</h1>");
@@ -37,15 +35,20 @@ public class CardapioServlet extends HttpServlet {
 
     Statement st = con.createStatement();
 
-
-    ResultSet rs = st.executeQuery("select * from cardapios");
+    String query = "select a.*, b.nome as categoria "
+            + "from cardapios as a inner join categorias as b "
+            + "on a.categorias_id = b.id";
+ 
+    ResultSet rs = st.executeQuery(query);
       
       out.println("<table>");
       out.println("<tr>");
       out.println("<th>id</th>");
       out.println("<th>NOME</th>");
+      out.println("<th>CATEGORIA</th>");
       out.println("<th>QTD</th>");
       out.println("<th>PRECO VENDA</th>");
+      out.println("<th>CATEGORIA ID</th>");
       out.println("</tr>");
       
       while (rs.next())
@@ -59,14 +62,18 @@ public class CardapioServlet extends HttpServlet {
           out.println(rs.getString("nome"));
           out.println("</td>");
           out.println("<td>");
+          out.println(rs.getString("categoria"));
+          out.println("</td>");
+          out.println("<td>");
           out.println(rs.getDouble("qtd"));
           out.println("</td>");
           out.println("<td>");
           out.println(rs.getDouble("valor_venda"));
           out.println("</td>");
+          out.println("<td>");
+          out.println(rs.getInt("categorias_id"));
+          out.println("</td>");
           out.println("</tr>");
-          
-      
         
       }
       st.close();
