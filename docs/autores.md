@@ -17,3 +17,4 @@ Nome
 | -------------------- |
 Douglas Santana                   
 Kennedy Alves
+Lucas Manoel
