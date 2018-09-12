@@ -4,6 +4,7 @@
     Author     : 17114290011
 --%>
 
+<%@page import="br.iesb.Calculadora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,13 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            Calculadora c = new Calculadora(4);
+            out.print(c.getCalculadora());
+            
+        %>
+        
+        
         <%@include file="exemploLoop.jsp" %>
         <%
             java.util.Date date = new java.util.Date();
