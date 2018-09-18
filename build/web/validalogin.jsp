@@ -7,7 +7,7 @@
         pass = request.getParameter("pass");
         
         if(user.equals("teste") && pass.equals("teste"))
-              response.sendRedirect("bemvindo.jsp");
+              response.sendRedirect("formulario.jsp");
         else
               response.sendRedirect("falha.jsp");
     }
